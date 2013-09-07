@@ -20,17 +20,20 @@
 #ifndef VOLMY_DESKTOP_MAINWINDOW_H
 #define VOLMY_DESKTOP_MAINWINDOW_H
 
-#include <QtWidgets/QMainWindow>
+#include <QtQuick/QQuickView>
 
 namespace VolmyDesktop
 {
 
-class MainWindow: public QMainWindow
+class MainWindow : public QQuickView
 {
     Q_OBJECT
+
 public:
-    explicit MainWindow();
-    ~MainWindow();
+    explicit MainWindow(QWindow *parent = 0);
+    virtual ~MainWindow();
+    void setMainQmlFile(const QString &file);
+    void showExpanded();
 };
 
 }

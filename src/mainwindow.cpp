@@ -17,20 +17,36 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+#include <QtQml/QQmlEngine>
 #include "mainwindow.hpp"
 
 namespace VolmyDesktop
 {
 
-MainWindow::MainWindow()
-    : QMainWindow(NULL)
+MainWindow::MainWindow(QWindow *parent)
+    : QQuickView(parent)
 {
-    resize(800, 600);
-    setWindowTitle("Volmy");
+    connect(engine(), SIGNAL(quit()), SLOT(close()));
+    setResizeMode(QQuickView::SizeRootObjectToView);
+    setFlags(Qt::FramelessWindowHint);
 }
 
 MainWindow::~MainWindow()
 {
+}
+
+void MainWindow::setMainQmlFile(const QString &file)
+{
+    setSource(QUrl(file));
+}
+
+void MainWindow::showExpanded()
+{
+#if defined(Q_WS_SIMULATOR) || defined(Q_OS_QNX)
+    showFullScreen();
+#else
+    show();
+#endif
 }
 
 }

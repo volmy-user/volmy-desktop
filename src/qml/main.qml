@@ -17,16 +17,19 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include <iostream>
-#include <QtWidgets/QApplication>
-#include <volmy/volmy.h>
-#include "mainwindow.hpp"
+import QtQuick 2.0
 
-int main (int argc, char * argv[])
-{
-    QApplication app(argc, argv);
-    VolmyDesktop::MainWindow window;
-    window.setMainQmlFile("qrc:/qml/main.qml");
-    window.showExpanded();
-    return app.exec();
+Rectangle {
+    width: 360
+    height: 360
+    Text {
+        text: qsTr("Hello World")
+        anchors.centerIn: parent
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            Qt.quit();
+        }
+    }
 }
