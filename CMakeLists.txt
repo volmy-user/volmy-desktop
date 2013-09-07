@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(TARGET Volmy)
-set(SOURCES src/main.cpp)
+set(SOURCES src/main.cpp src/mainwindow.cpp)
 
 set(QTDIR /opt/qt5)
 set(Qt5Widgets_DIR  ${QTDIR}/lib/cmake/Qt5Widgets)

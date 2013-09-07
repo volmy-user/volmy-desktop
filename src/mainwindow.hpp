@@ -17,15 +17,22 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include <iostream>
-#include <QtWidgets/QApplication>
-#include <volmy/volmy.h>
-#include "mainwindow.hpp"
+#ifndef VOLMY_DESKTOP_MAINWINDOW_H
+#define VOLMY_DESKTOP_MAINWINDOW_H
 
-int main (int argc, char * argv[])
+#include <QtWidgets/QMainWindow>
+
+namespace VolmyDesktop
 {
-    QApplication app(argc, argv);
-    VolmyDesktop::MainWindow window;
-    window.setVisible(true);
-    return app.exec();
+
+class MainWindow: public QMainWindow
+{
+    Q_OBJECT
+public:
+    explicit MainWindow();
+    ~MainWindow();
+};
+
 }
+
+#endif // VOLMY_DESKTOP_MAINWINDOW_H
