@@ -19,6 +19,8 @@
 
 #include <QtQml/QQmlEngine>
 #include "mainwindow.hpp"
+#include <QtGui/QBitmap>
+#include <QtGui/QPainter>
 
 namespace VolmyDesktop
 {
@@ -27,12 +29,21 @@ MainWindow::MainWindow(QWindow *parent)
     : QQuickView(parent)
 {
     connect(engine(), SIGNAL(quit()), SLOT(close()));
+//    connect(this, SIGNAL(widthChanged(int)), this, SLOT(redrawBorders()));
+//    connect(this, SIGNAL(heightChanged(int)), this, SLOT(redrawBorders()));
     setResizeMode(QQuickView::SizeRootObjectToView);
     setFlags(Qt::FramelessWindowHint);
 }
 
-MainWindow::~MainWindow()
+void MainWindow::redrawBorders()
 {
+    QBitmap objBitmap(size());
+    QPainter painter;
+    QRect rect(position(), QPoint(position().x() + width(), position().y() + height()));
+    painter.fillRect(rect,Qt::white);
+    painter.setBrush(QColor(0,0,0));
+    painter.drawRoundedRect(rect,10,10);
+    setMask(objBitmap);
 }
 
 void MainWindow::setMainQmlFile(const QString &file)
@@ -47,6 +58,10 @@ void MainWindow::showExpanded()
 #else
     show();
 #endif
+}
+
+MainWindow::~MainWindow()
+{
 }
 
 }

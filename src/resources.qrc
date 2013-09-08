@@ -1,5 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
+        <file>qml/components/images/back.png</file>
+        <file>qml/components/images/checkmark.png</file>
+        <file>qml/components/images/next.png</file>
+        <file>qml/components/images/qt-logo.png</file>
+        <file>qml/components/images/slider_handle.png</file>
+        <file>qml/components/images/tab.png</file>
+        <file>qml/components/TouchList.qml</file>
+        <file>qml/components/TouchListDelegate.qml</file>
+        <file>qml/views/auth.qml</file>
     </qresource>
 </RCC>

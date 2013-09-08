@@ -18,18 +18,16 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import QtQuick 2.0
+import "components"
 
 Rectangle {
-    width: 360
-    height: 360
-    Text {
-        text: qsTr("Hello World")
-        anchors.centerIn: parent
-    }
-    MouseArea {
+    width: 300
+    height: 600
+    TouchList {
+        id: ll
         anchors.fill: parent
-        onClicked: {
-            Qt.quit();
+        Component.onCompleted: {
+            addItem("Login", "Log in as existed user", Qt.resolvedUrl("qrc:/qml/views/auth.qml"))
         }
     }
 }

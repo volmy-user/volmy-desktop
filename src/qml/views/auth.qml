@@ -17,28 +17,37 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#ifndef VOLMY_DESKTOP_MAINWINDOW_H
-#define VOLMY_DESKTOP_MAINWINDOW_H
+import QtQuick 2.1
 
-#include <QtQuick/QQuickView>
-
-namespace VolmyDesktop
-{
-
-class MainWindow : public QQuickView
-{
-    Q_OBJECT
-
-public:
-    explicit MainWindow(QWindow *parent = 0);
-    virtual ~MainWindow();
-    void setMainQmlFile(const QString &file);
-    void showExpanded();
-
-private slots:
-    void redrawBorders();
-};
-
+Rectangle {
+    width: 300
+    height: 300
+    anchors.fill: parent
+    anchors.margins: 10
+    Text {
+        id: title
+        width: parent.width
+        text: "Login"
+        font.pointSize: 20
+    }
+    Rectangle {
+        id: inputImageKey
+        width: parent.width
+        height: 40
+        anchors.margins: 5
+        anchors.top: title.bottom
+        anchors.topMargin: 20
+        radius: 10
+        border.color: "#aaaaaa"
+        border.width: 1
+        TextInput {
+            anchors.fill: parent
+            color: "black"
+            focus: true
+            anchors.margins: 10
+            font.pointSize: parent.height / 2
+            anchors.horizontalCenter: parent.horizontalCenter
+            maximumLength: 13
+        }
+    }
 }
-
-#endif // VOLMY_DESKTOP_MAINWINDOW_H
